@@ -38,6 +38,7 @@
 
 <script>
 // @ is an alias to /src
+import { authService } from '../services/auth.service'
 export default {
   name: "LoginComponent",
   data() {
@@ -48,7 +49,11 @@ export default {
   components: {},
   methods: {
     login() {
-      console.log(this.user)
+      authService.login(this.user).then(response => {
+        console.log(response);
+        this.$router.push('/');
+      })
+      // console.log(this.user)
     }
   }
 };
